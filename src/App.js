@@ -1,59 +1,23 @@
-import React, {Component} from 'react';
-import Timer from "./components/Timer/Timer";
+import React from "react";
+import TimerContainer from "./components/TimerContainer/TimerContainer";
 
-class App extends Component {
-    state = {
-        time: 5,
-        defTime: 5,
-        step: 1,
-        autosStart: false
-    };
-
-    onTick = () => {
-        console.log("Осталось времени: " + this.state.time)
-    }
-
-    onTimeStart = () => {
-        console.log("Таймер запущен!!!")
-        let timerId = setInterval(() => {
-            this.setState({
-                time: this.state.time - 1
-            });
-            if (this.state.time < 1) {
-                this.setState({
-                    time: this.state.defTime
-                });
-            }
-        }, this.state.step * 1000)
-
-
-    };
-
-    onTimeEnd = () => {
-        console.log("Время вышло!")
-    }
-
-    setTimeHandler = (e) => {
-        this.setState({
-            time: Number(e.target.value)
-        })
-    };
-
-    render() {
-        return (
-            <div className="App">
-                <input type="number" value={this.state.time} onChange={(event) => this.setTimeHandler(event)}/>
-                <Timer
-                    time={this.state.time}
-                    step={this.state.step}
-                    autosStart={this.state.autosStart}
-                    onTick={this.onTick}
-                    onTimeStart={this.onTimeStart}
-                    onTimeEnd={this.onTimeEnd}
-                />
-            </div>
-        )
-    }
-}
+const App = () => (
+    <div className='App'>
+        <TimerContainer
+            time={5}
+            timerName = "Timer 1"
+            step = {1}
+            autosStart ={false}
+            isInfinite = {false}
+        />
+        <TimerContainer
+            time={15}
+            timerName = "Timer 2"
+            step = {2}
+            autoStart={false}
+            isInfinite={false}
+        />
+    </div>
+);
 
 export default App;

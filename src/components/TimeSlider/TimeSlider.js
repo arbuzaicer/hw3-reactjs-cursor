@@ -2,13 +2,13 @@ import { Slider } from 'antd';
 import React from 'react';
 
 const style = {
-    display: 'inline-block',
-    height: 300,
-    marginLeft: 70,
+    display: 'grid',
+    gridRow: '3',
+    gridColumn: '1/4',
+    height: 300
 };
 
 const TimeSlider = ({value, min, max}) => {
-    console.log(value)
     return (
         <div style={style}>
             <Slider vertical min={min} max={max} value={value} />
