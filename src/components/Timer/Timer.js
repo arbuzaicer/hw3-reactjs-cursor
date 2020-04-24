@@ -31,6 +31,7 @@ const Timer = ({
           } else {
             clearInterval(timeId);
             onTimeEnd();
+            setCurrentTime(displayMaxTime);
             setTimerActive(false);
           }
         }
@@ -49,6 +50,7 @@ const Timer = ({
           className="input-time"
           type="number"
           placeholder={placeholder}
+          min={1}
           onChange={(event) => {
             setCurrentTime(Number(event.target.value));
             setDisplayMaxTime(Number(event.target.value));
